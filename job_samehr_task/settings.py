@@ -38,10 +38,12 @@ INSTALLED_APPS = [
 
     ##
     'simple_history',
+    'captcha',
 
     ##
     'core_app',
     'activity_logger',
+    'accounts',
 ]
 
 MIDDLEWARE = [

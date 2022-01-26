@@ -19,5 +19,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core_app.urls', namespace='core_app')),
-    path('', include('activity_logger.urls', namespace='activity_logger'))
+    path('', include('accounts.urls', namespace='accounts')),
+    path('', include('activity_logger.urls', namespace='activity_logger')),
+    path('captcha/', include('captcha.urls')),
+
 ]

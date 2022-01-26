@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <style>
+    #id_captcha_1{
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    }
+    </style>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Register" class="btn btn-primary">
+        <button class='captcha btn btn-dark' type="button">refresh</button>
+    </form>
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        $('.captcha').click(function () {
+            $.getJSON("/captcha/refresh/", function (result) {
+                $('.captcha').attr('src', result['image_url']);
+                $('#id_captcha_0').val(result['key'])
+            });
+        });
+    </script>
+{% endblock %}
